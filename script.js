@@ -89,15 +89,19 @@ btnPage2.addEventListener('click', function() {
     formData.matricula = matriculaInput.value.trim();
     formData.whatsapp = whatsappInput.value.trim();
     
-    // Capturar as opções extras (checkboxes)
     const marretadaThor = document.getElementById('marretadaThor').checked;
     const peitinGalego = document.getElementById('peitinGalego').checked;
+    
+    console.log('Marretada do Thor:', marretadaThor);
+    console.log('Peitin do Galego:', peitinGalego);
     
     let opcoesExtras = [];
     if (marretadaThor) opcoesExtras.push('Marretada do Thor');
     if (peitinGalego) opcoesExtras.push('Peitin do Galego');
     
     const opcoesTexto = opcoesExtras.length > 0 ? opcoesExtras.join(', ') : 'Nenhuma';
+    
+    console.log('Opções selecionadas:', opcoesTexto);
     
     document.getElementById('form_nome').value = formData.nome;
     document.getElementById('form_email').value = formData.email;
@@ -107,8 +111,11 @@ btnPage2.addEventListener('click', function() {
     document.getElementById('form_opcoes').value = opcoesTexto;
     
     const formsubmit = document.getElementById('formsubmit');
-    
     const formDataToSend = new FormData(formsubmit);
+    
+    for (let [key, value] of formDataToSend.entries()) {
+        console.log(key + ':', value);
+    }
     
     fetch(formsubmit.action, {
         method: 'POST',
@@ -116,12 +123,32 @@ btnPage2.addEventListener('click', function() {
         headers: {
             'Accept': 'application/json'
         }
-    })  
+    }).then(response => {
+        console.log('Resposta do servidor:', response.status);
+        if (response.ok) {
+            mostrarMensagem('Formulário enviado com sucesso!', 'sucesso');
+        }
+    }).catch(error => {
+        mostrarMensagem('Erro ao enviar o formulário. Tente novamente.', 'erro');
+    });
     
     page2.style.display = 'none';
     page3.style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+function mostrarMensagem(texto, tipo) {
+    const mensagemDiv = document.getElementById('mensagem');
+    if (mensagemDiv) {
+        mensagemDiv.textContent = texto;
+        mensagemDiv.className = `mensagem ${tipo}`;
+        mensagemDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            mensagemDiv.style.display = 'none';
+        }, 5000);
+    }
+}
 
 const style = document.createElement('style');
 style.textContent = `
