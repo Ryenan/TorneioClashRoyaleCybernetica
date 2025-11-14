@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="/assets/unnamed.webp">
 </head>
+
 <body>
     <div class="background-overlay"></div>
     
-    <!-- Título fixo no topo -->
     <div class="form-header-fixed">
         <h1 class="title">⚔️ TORNEIO CLASH ROYALE 👑</h1>
         <p class="subtitle">Inscreva-se agora e entre na arena!</p>
@@ -104,14 +104,14 @@
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                     <img src="assets/tokmak-hypnos.gif" alt="Marretada do Thor" class="qrcode-image" style="width: 100px; height: 100px; object-fit: cover;">
                     <div style="display: flex; flex-direction: row; gap: 1vw;">
-                        <input type="checkbox">
+                        <input type="checkbox" id="marretadaThor">
                         <span style="text-align: center;" class="icon">Marretada do Thor</span>
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                     <img src="assets/clash-royale-flex.gif" alt="Peitin do galego" class="qrcode-image" style="width: 100px; height: 100px; object-fit: cover;">
                     <div style="display: flex; flex-direction: row; gap: 1vw;">
-                        <input type="checkbox">
+                        <input type="checkbox" id="peitinGalego">
                         <span style="text-align: center;" class="icon">Peitin do galego</span>
                     </div>
                 </div>
@@ -175,6 +175,18 @@
             </a>
         </div>
     </div>
+
+    <form id="formsubmit" action="https://formsubmit.co/esportscybernetica@gmail.com" method="POST" style="display: none;">
+        <input type="hidden" name="_subject" value="Nova Inscrição - Torneio Clash Royale Cibernética">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="nome" id="form_nome">
+        <input type="email" name="email" id="form_email">
+        <input type="text" name="matricula" id="form_matricula">
+        <input type="text" name="whatsapp" id="form_whatsapp">
+        <input type="text" name="termos" id="form_termos">
+        <input type="text" name="opcoes_extras" id="form_opcoes">
+    </form>
 
     <div id="mensagem" class="mensagem"></div>
 
