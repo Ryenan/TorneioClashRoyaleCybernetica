@@ -89,11 +89,22 @@ btnPage2.addEventListener('click', function() {
     formData.matricula = matriculaInput.value.trim();
     formData.whatsapp = whatsappInput.value.trim();
     
+    // Capturar as opções extras (checkboxes)
+    const marretadaThor = document.getElementById('marretadaThor').checked;
+    const peitinGalego = document.getElementById('peitinGalego').checked;
+    
+    let opcoesExtras = [];
+    if (marretadaThor) opcoesExtras.push('Marretada do Thor');
+    if (peitinGalego) opcoesExtras.push('Peitin do Galego');
+    
+    const opcoesTexto = opcoesExtras.length > 0 ? opcoesExtras.join(', ') : 'Nenhuma';
+    
     document.getElementById('form_nome').value = formData.nome;
     document.getElementById('form_email').value = formData.email;
     document.getElementById('form_matricula').value = formData.matricula;
     document.getElementById('form_whatsapp').value = formData.whatsapp;
     document.getElementById('form_termos').value = 'Aceito';
+    document.getElementById('form_opcoes').value = opcoesTexto;
     
     const formsubmit = document.getElementById('formsubmit');
     
@@ -105,34 +116,12 @@ btnPage2.addEventListener('click', function() {
         headers: {
             'Accept': 'application/json'
         }
-    }).then(response => {
-        if (response.ok) {
-            console.log('Formulário enviado com sucesso!');
-            mostrarMensagem('✅ Dados enviados com sucesso!', 'sucesso');
-        } else {
-            console.log('Erro ao enviar formulário');
-            mostrarMensagem('⚠️ Dados salvos localmente. Continue para o pagamento.', 'sucesso');
-        }
-    }).catch(error => {
-        console.log('Erro:', error);
-        mostrarMensagem('⚠️ Dados salvos localmente. Continue para o pagamento.', 'sucesso');
-    });
+    })  
     
     page2.style.display = 'none';
     page3.style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-function mostrarMensagem(texto, tipo) {
-    const mensagemDiv = document.getElementById('mensagem');
-    mensagemDiv.textContent = texto;
-    mensagemDiv.className = `mensagem ${tipo}`;
-    mensagemDiv.style.display = 'block';
-    
-    setTimeout(() => {
-        mensagemDiv.style.display = 'none';
-    }, 5000);
-}
 
 const style = document.createElement('style');
 style.textContent = `
