@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneio Clash Royale - Inscrição</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="/assets/unnamed.webp">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <!-- Título fixo no topo -->
+    <div class="form-header-fixed">
+        <h1 class="title">⚔️ TORNEIO CLASH ROYALE 👑</h1>
+        <p class="subtitle">Inscreva-se agora e entre na arena!</p>
+    </div>
+
+    <!-- Página 1: Termos -->
+    <div class="container page-container" id="page1">
+        <div class="form-card">
+            <h2>Termos e Condições</h2>
+            <ul class="termos-list">
+                <li>1. Todo o dinheiro arrecadado será destinado à atlética</li>
+                <li>2. Em caso de não comparecimento, o participante será desclassificado <strong>sem direito ao reembolso.</strong></li>
+                <li>3. Serão permitidas todas as cartas, o nível será padronizado por meio do próprio jogo.</li>
+                <li>4. Nas etapas MD3, os 3 decks não poderão conter cartas repetidas.</li>
+                <li>5. Em caso de trapaça ou excesso de desrespeito a organização tem total direito de desclassificar o participante <strong>sem direito ao reembolso.</strong></li>
+                <li>6. O número de matrícula deve ser válido e correspondente ao participante, em caso de dúvida, a organização poderá solicitar comprovação.</li>
+                <li>7. Em caso de ultrapassagem de vagas, o formulário será fechado</li>
+            </ul>
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="termosCheckbox" class="custom-checkbox">
+                <label for="termosCheckbox" style="margin-bottom: 0;">Eu concordo com os termos e condições</label>
+            </div>
+            <button id="btnPage1" class="submit-btn" disabled>
+                <span class="btn-icon">⚔️</span>
+                Avançar
+                <span class="btn-icon">⚔️</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Página 2: Dados pessoais -->
+    <div class="container page-container" id="page2" style="display: none;">
+        <div class="form-card">
+            <h2>Dados Pessoais</h2>
+            <div class="form-group">
+                <label for="nome">
+                    <span class="icon">👤</span>
+                    Nome Completo
+                </label>
+                <input 
+                    type="text" 
+                    id="nome" 
+                    name="nome" 
+                    placeholder="Digite seu nome completo"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <span class="icon">📧</span>
+                    E-mail
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="seu.email@exemplo.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="playerTag">
+                    <span class="icon">🏷️</span>
+                    Número de matrícula
+                </label>
+                <input 
+                    type="text" 
+                    id="matricula" 
+                    name="matricula" 
+                    placeholder="#XXXXXXXX"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="whatsapp">
+                    <span class="icon">💬</span>
+                    Whatssap para contato
+                </label>
+                <input 
+                    type="text" 
+                    id="whatsapp" 
+                    name="whatsapp" 
+                    placeholder="(88) 9XXXX-XXXX"
+                    required
+                >
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; margin-top: 2vh; margin-bottom: 2vh; gap: 4vw;">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <img src="assets/tokmak-hypnos.gif" alt="Marretada do Thor" class="qrcode-image" style="width: 100px; height: 100px; object-fit: cover;">
+                    <div style="display: flex; flex-direction: row; gap: 1vw;">
+                        <input type="checkbox">
+                        <span style="text-align: center;" class="icon">Marretada do Thor</span>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <img src="assets/clash-royale-flex.gif" alt="Peitin do galego" class="qrcode-image" style="width: 100px; height: 100px; object-fit: cover;">
+                    <div style="display: flex; flex-direction: row; gap: 1vw;">
+                        <input type="checkbox">
+                        <span style="text-align: center;" class="icon">Peitin do galego</span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btnPage2" class="submit-btn" disabled>
+                <span class="btn-icon">🤴</span>
+                Avançar
+                <span class="btn-icon">🤴</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Página 3: Confirmação -->
+    <div class="container page-container" id="page3" style="display: none;">
+        <div class="form-card payment-card">
+            <h2>🏆 Finalizar Inscrição</h2>
+            
+            <p class="confirmation-text">
+                Escaneie o QR Code abaixo para efetuar o pagamento ou utilize a chave PIX:
+            </p>
+            
+            <div class="qrcode-container">
+                <img src="/assets/qrCodeCybernetica.png" alt="QR Code para pagamento" class="qrcode-image">
+            </div>
+            
+            <div class="pix-key-container">
+                <label class="pix-label">
+                    <span class="icon">🔑</span>
+                    Chave PIX (E-mail)
+                </label>
+                <div class="pix-key-wrapper">
+                    <input type="text" id="pixKey" value="aaacybernetica@gmail.com" readonly class="pix-input">
+                    <button class="copy-btn" onclick="copyToClipboard()">
+                        <span class="copy-icon">📋</span>
+                        Copiar
+                    </button>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <p class="confirmation-text">
+                Após efetuar o pagamento, envie o comprovante via WhatsApp ou no número abaixo:
+            </p>
+            
+            <div class="pix-key-wrapper" style="margin-bottom: 1vh;">
+               <input type="text" id="pixKey" value="+55 88 98832-9796" readonly class="pix-input">
+               <button class="copy-btn" onclick="copyToClipboard()">
+                   <span class="copy-icon">📋</span>
+                   Copiar
+               </button>
+           </div>
+
+            <a href="https://wa.me/5588988329796?text=Estou%20entrando%20em%20contato%20para%20confirmar%20minha%20inscri%C3%A7%C3%A3o%20no%20torneio%20de%20clash%20royale%20da%20cybernetica!%20" 
+               target="_blank" 
+               class="submit-btn whatsapp-btn">
+                <span class="btn-icon">📱</span>
+                Enviar Comprovante via WhatsApp
+                <span class="btn-icon">✅</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="mensagem" class="mensagem"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
